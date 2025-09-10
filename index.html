@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markey Web - Học Marketing Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8; /* Light blue-gray background */
+        }
+        .page {
+            display: none; /* Hide all pages by default */
+        }
+        .page.active {
+            display: block; /* Show active page */
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        /* Style for the active nav link */
+        .nav-link-active {
+             background-color: #4338CA; /* indigo-700 */
+             color: white !important; /* Force text color to white */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Container chính -->
+    <div id="root">
+
+        <!-- =================================================================== -->
+        <!-- VIEW 1: LANDING PAGE (TRƯỚC KHI ĐĂNG NHẬP)                     -->
+        <!-- =================================================================== -->
+        <div id="landing-view" class="page">
+            <div class="min-h-screen bg-slate-100 flex flex-col">
+                <!-- Header của Landing Page -->
+                 <header class="bg-white/80 backdrop-blur-md shadow-sm">
+                    <nav class="container mx-auto px-4 lg:px-8 flex items-center justify-between h-16">
+                         <div class="flex items-center">
+                            <svg class="h-8 w-auto text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <span class="ml-2 font-bold text-xl">Markey</span>
+                        </div>
+                        <div>
+                             <a href="#" class="nav-auth-trigger font-medium text-indigo-600 hover:text-indigo-500">Đăng nhập</a>
+                             <a href="#" class="nav-auth-trigger ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                                Đăng ký
+                            </a>
+                        </div>
+                    </nav>
+                </header>
+
+                <!-- Nội dung chính của Landing Page -->
+                <main class="flex-grow flex items-center justify-center">
+                    <div class="text-center container mx-auto px-4 py-16">
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+                            Khám phá con đường <span class="text-indigo-600">Marketing</span> của bạn
+                        </h1>
+                        <p class="max-w-2xl mx-auto text-lg text-gray-600 mb-10">
+                            Tìm kiếm kỹ năng bạn quan tâm và bắt đầu hành trình trở thành một Marketer chuyên nghiệp.
+                        </p>
+                        <div class="max-w-2xl mx-auto">
+                            <div class="relative nav-auth-trigger cursor-pointer">
+                                <input type="text" placeholder="Nhập kỹ năng bạn quan tâm..." class="w-full pl-5 pr-16 py-4 text-lg border-2 border-gray-300 rounded-full focus:ring-indigo-500 focus:border-indigo-500 transition duration-300" readonly>
+                                <button class="absolute inset-y-0 right-0 flex items-center justify-center w-14 h-14 bg-indigo-600 text-white rounded-full m-1.5 hover:bg-indigo-700">
+                                    <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-10 flex flex-wrap justify-center gap-3">
+                           <a href="#" class="nav-auth-trigger bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-yellow-500">Kỹ năng thiết kế</a>
+                           <a href="#" class="nav-auth-trigger bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Viết content</a>
+                           <a href="#" class="nav-auth-trigger bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-yellow-500">Nghiên cứu thị trường</a>
+                           <a href="#" class="nav-auth-trigger bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Giao tiếp</a>
+                           <a href="#" class="nav-auth-trigger bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Public Relationship</a>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 2: AUTH PAGE (ĐĂNG NHẬP / ĐĂNG KÝ)                          -->
+        <!-- =================================================================== -->
+        <div id="auth-view" class="page">
+            <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-center">
+                            <svg class="h-12 w-auto text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <h2 class="ml-3 text-center text-3xl font-extrabold text-gray-900">Markey Web</h2>
+                        </div>
+                        <p id="auth-title" class="mt-2 text-center text-sm text-gray-600">Đăng nhập vào tài khoản của bạn</p>
+                    </div>
+                    <form id="login-form" class="mt-8 space-y-6" action="#" method="POST">
+                        <div class="rounded-md shadow-sm -space-y-px">
+                            <div><input id="login-email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Địa chỉ email"></div>
+                            <div><input id="login-password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Mật khẩu"></div>
+                        </div>
+                        <p id="login-error" class="text-red-500 text-sm mt-2"></p>
+                        <div><button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Đăng nhập</button></div>
+                    </form>
+                    <form id="register-form" class="mt-8 space-y-6 hidden" action="#" method="POST">
+                         <div class="rounded-md shadow-sm -space-y-px">
+                            <div><input id="register-email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Địa chỉ email"></div>
+                            <div><input id="register-password" type="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Mật khẩu"></div>
+                            <div><input id="register-confirm-password" type="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Xác nhận mật khẩu"></div>
+                        </div>
+                         <p id="register-error" class="text-red-500 text-sm mt-2"></p>
+                        <div><button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Đăng ký</button></div>
+                    </form>
+                    <div class="text-sm text-center"><a href="#" id="toggle-auth-mode" class="font-medium text-indigo-600 hover:text-indigo-500">Chưa có tài khoản? Đăng ký ngay</a></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- =================================================================== -->
+        <!-- VIEW 3: APP CONTAINER (SAU KHI ĐĂNG NHẬP)                       -->
+        <!-- =================================================================== -->
+        <div id="app-container" class="page">
+             <!-- Header chung cho App -->
+            <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40">
+                <nav class="container mx-auto px-4 lg:px-8">
+                    <div class="flex items-center justify-between h-16">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 flex items-center"><svg class="h-8 w-auto text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg><span class="ml-2 font-bold text-xl">Markey</span></div>
+                            <div class="hidden md:block"><div id="main-nav" class="ml-10 flex items-baseline space-x-4">
+                                <a href="#home" data-page="home-view" class="nav-link text-gray-700 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                                <a href="#kho-thong-tin" data-page="kho-thong-tin-view" class="nav-link text-gray-700 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Kho thông tin</a>
+                                <a href="#forum" data-page="forum-view" class="nav-link text-gray-700 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Forum</a>
+                                <!-- <a href="#workdate" data-page="workdate-view" class="nav-link text-gray-700 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Workdate</a> -->
+                            </div></div>
+                        </div>
+                        <div class="hidden md:block"><div class="ml-4 flex items-center md:ml-6"><div class="ml-3 relative">
+                            <div><button type="button" class="max-w-xs bg-gray-200 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-white" id="user-menu-button"><div id="user-avatar" class="h-8 w-8 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-xs"></div></button></div>
+                            <div id="user-menu" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                                <div class="px-4 py-2 text-sm text-gray-700" id="user-email-display"></div>
+                                <a href="#" id="logout-button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng xuất</a>
+                            </div>
+                        </div></div></div>
+                        <div class="-mr-2 flex md:hidden"><button type="button" id="mobile-menu-open" class="bg-gray-200 inline-flex items-center justify-center p-2 rounded-md text-gray-500"><i data-lucide="menu"></i></button></div>
+                    </div>
+                </nav>
+                <div class="md:hidden hidden" id="mobile-menu">
+                    <div id="mobile-nav" class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <a href="#home" data-page="home-view" class="nav-link text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="#kho-thong-tin" data-page="kho-thong-tin-view" class="nav-link text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Kho thông tin</a>
+                        <a href="#forum" data-page="forum-view" class="nav-link text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Forum</a>
+                        <!-- <a href="#workdate" data-page="workdate-view" class="nav-link text-gray-700 hover:bg-gray-200 block px-3 py-2 rounded-md text-base font-medium">Workdate</a> -->
+                    </div>
+                    <div class="pt-4 pb-3 border-t border-gray-200">
+                        <div class="flex items-center px-5">
+                            <div class="flex-shrink-0"><div id="user-avatar-mobile" class="h-10 w-10 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold"></div></div>
+                            <div class="ml-3"><div id="user-email-display-mobile" class="text-base font-medium leading-none text-gray-800"></div></div>
+                        </div>
+                        <div class="mt-3 px-2 space-y-1"><a href="#" id="logout-button-mobile" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600">Đăng xuất</a></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Nơi chứa nội dung các trang con -->
+            <main id="app-content-container"></main>
+        </div>
+
+
+        <!-- =================================================================== -->
+        <!-- TEMPLATES CHO CÁC TRANG CON (SAU KHI ĐĂNG NHẬP)                  -->
+        <!-- =================================================================== -->
+        <template id="home-view-template">
+            <div class="container mx-auto px-4 lg:px-8 py-8">
+                 <div class="text-center mb-12">
+                     <h1 class="text-4xl font-bold text-gray-900">Chào mừng trở lại!</h1>
+                     <p class="text-lg text-gray-600 mt-2">Sẵn sàng để học hỏi và kết nối?</p>
+                 </div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     <!-- Card Kho thông tin -->
+                     <a href="#kho-thong-tin" data-page="kho-thong-tin-view" class="nav-link-card group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                         <div class="text-indigo-500 mb-4"><i data-lucide="library" class="w-12 h-12"></i></div>
+                         <h2 class="text-2xl font-bold text-gray-900 mb-2">Kho thông tin</h2>
+                         <p class="text-gray-600">Nơi tổng hợp kiến thức, kỹ năng marketing từ cơ bản đến nâng cao.</p>
+                     </a>
+                     <!-- Card Forum -->
+                     <a href="#forum" data-page="forum-view" class="nav-link-card group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                         <div class="text-teal-500 mb-4"><i data-lucide="messages-square" class="w-12 h-12"></i></div>
+                         <h2 class="text-2xl font-bold text-gray-900 mb-2">Forum</h2>
+                         <p class="text-gray-600">Thảo luận, đặt câu hỏi và chia sẻ kinh nghiệm cùng cộng đồng.</p>
+                     </a>
+                     <!-- Card Workdate -->
+                     <a href="#workdate" data-page="workdate-view" class="nav-link-card group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                         <div class="text-rose-500 mb-4"><i data-lucide="users" class="w-12 h-12"></i></div>
+                         <h2 class="text-2xl font-bold text-gray-900 mb-2">Workdate</h2>
+                         <p class="text-gray-600">Tìm kiếm bạn đồng hành, kết nối và cùng nhau phát triển.</p>
+                     </a>
+                 </div>
+            </div>
+        </template>
+
+        <template id="kho-thong-tin-view-template">
+            <div class="container mx-auto px-4 lg:px-8 py-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <aside class="w-full md:w-1/4 lg:w-1/5"><h2 class="text-xl font-bold mb-4">Kỹ năng Marketing</h2><ul id="categories-list" class="space-y-2"></ul></aside>
+                    <section class="w-full md:w-3/4 lg:w-4/5">
+                        <h1 id="content-title" class="text-3xl font-bold text-gray-900 mb-6">Chào mừng bạn!</h1>
+                        <div id="content-area" class="space-y-4">
+                            <div class="bg-white p-6 rounded-lg shadow-md"><p class="text-gray-600">Hãy chọn một kỹ năng từ danh sách bên trái để bắt đầu học.</p></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </template>
+        
+        <template id="forum-view-template">
+             <div class="container mx-auto px-4 lg:px-8 py-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                    <h1 class="text-3xl font-bold text-gray-900">Diễn đàn Markey</h1>
+                    <button class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 flex items-center gap-2 transition-colors w-full sm:w-auto justify-center">
+                        <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                        <span>Tạo chủ đề mới</span>
+                    </button>
+                </div>
+
+                <!-- Forum Table -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[600px]">
+                            <thead class="bg-gray-100 border-b border-gray-200">
+                                <tr>
+                                    <th class="p-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">Chủ đề</th>
+                                    <th class="p-4 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider hidden md:table-cell">Trả lời</th>
+                                    <th class="p-4 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider hidden md:table-cell">Lượt xem</th>
+                                    <th class="p-4 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider hidden sm:table-cell">Bài viết cuối</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <!-- Thread Item 1 -->
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 align-middle">
+                                        <div class="flex items-center gap-3">
+                                            <div class="text-gray-400"><i data-lucide="message-square"></i></div>
+                                            <div>
+                                                <a href="#" class="font-bold text-indigo-700 hover:underline">Thảo luận về xu hướng SEO 2025</a>
+                                                <div class="text-sm text-gray-500">bởi <span class="font-semibold text-indigo-600">Mai Anh</span>, hôm qua lúc 15:30</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">15</td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">1.2k</td>
+                                    <td class="p-4 text-sm text-gray-600 align-middle hidden sm:table-cell">
+                                        <div>bởi <span class="font-semibold text-indigo-600">Đức Huy</span></div>
+                                        <div class="text-xs">hôm nay lúc 09:15</div>
+                                    </td>
+                                </tr>
+                                <!-- Thread Item 2 -->
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 align-middle">
+                                        <div class="flex items-center gap-3">
+                                             <div class="text-gray-400"><i data-lucide="message-square"></i></div>
+                                             <div>
+                                                <a href="#" class="font-bold text-indigo-700 hover:underline">Case study: Chạy chiến dịch Facebook Ads hiệu quả cho ngành F&B</a>
+                                                <div class="text-sm text-gray-500">bởi <span class="font-semibold text-indigo-600">Bảo Trân</span>, 2 ngày trước</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">42</td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">5.8k</td>
+                                    <td class="p-4 text-sm text-gray-600 align-middle hidden sm:table-cell">
+                                        <div>bởi <span class="font-semibold text-indigo-600">Kiều Trang</span></div>
+                                        <div class="text-xs">hôm nay lúc 08:40</div>
+                                    </td>
+                                </tr>
+                                <!-- Thread Item 3 -->
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 align-middle">
+                                        <div class="flex items-center gap-3">
+                                             <div class="text-gray-400"><i data-lucide="help-circle"></i></div>
+                                             <div>
+                                                <a href="#" class="font-bold text-indigo-700 hover:underline">[Hỏi đáp] Làm thế nào để xây dựng Brand Identity cho startup?</a>
+                                                <div class="text-sm text-gray-500">bởi <span class="font-semibold text-indigo-600">Nhật Minh</span>, 5 ngày trước</div>
+                                             </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">8</td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">980</td>
+                                    <td class="p-4 text-sm text-gray-600 align-middle hidden sm:table-cell">
+                                        <div>bởi <span class="font-semibold text-indigo-600">Mai Anh</span></div>
+                                        <div class="text-xs">hôm qua lúc 21:05</div>
+                                    </td>
+                                </tr>
+                                <!-- Thread Item 4 -->
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 align-middle">
+                                        <div class="flex items-center gap-3">
+                                             <div class="text-yellow-500"><i data-lucide="gem"></i></div>
+                                             <div>
+                                                <a href="#" class="font-bold text-indigo-700 hover:underline">Tổng hợp các công cụ AI miễn phí cho Marketer</a>
+                                                <div class="text-sm text-gray-500">bởi <span class="font-semibold text-indigo-600">Admin</span>, 1 tuần trước</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">112</td>
+                                    <td class="p-4 text-center text-gray-600 align-middle hidden md:table-cell">12.4k</td>
+                                    <td class="p-4 text-sm text-gray-600 align-middle hidden sm:table-cell">
+                                        <div>bởi <span class="font-semibold text-indigo-600">Nhật Minh</span></div>
+                                        <div class="text-xs">2 giờ trước</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--
+        <template id="workdate-view-template">
+            <div class="bg-[#FFEECF] min-h-[calc(100vh-4rem)] p-4 sm:p-8">
+                <div class="container mx-auto">
+                    
+                    <div class="flex justify-center mb-8">
+                        <div class="bg-white/50 p-1.5 rounded-full shadow-inner">
+                            <button data-tab="match" class="workdate-tab-btn bg-white text-indigo-600 px-6 py-2 rounded-full font-semibold shadow">Match</button>
+                            <button data-tab="connect" class="workdate-tab-btn text-gray-600 px-6 py-2 rounded-full font-semibold">Connect</button>
+                        </div>
+                    </div>
+                    
+                    
+                    <div id="workdate-tab-content">
+                        
+                        <div id="match-content" class="workdate-tab-pane">
+                            <div class="flex items-center justify-center gap-4 sm:gap-8">
+                                <button id="prev-student-btn" class="bg-rose-500 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-rose-600 transition flex-shrink-0"><i data-lucide="arrow-left"></i></button>
+                                
+                                
+                                <div id="student-card-container" class="w-full max-w-sm">
+                                    
+                                </div>
+                                
+                                <button id="next-student-btn" class="bg-green-500 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition flex-shrink-0"><i data-lucide="arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        
+                        <div id="connect-content" class="workdate-tab-pane hidden">
+                             <div class="max-w-3xl mx-auto">
+                                <div class="text-center mb-8">
+                                    <h2 class="text-3xl font-bold text-gray-800">Connect</h2>
+                                    <p class="text-gray-600">Những người bạn có thể hứng thú</p>
+                                </div>
+                                
+                                <div class="flex items-center gap-4 mb-8 overflow-x-auto pb-4 -mx-4 px-4">
+                                     <div class="text-center flex-shrink-0 w-20"><div class="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center cursor-pointer border-2 border-dashed border-gray-400 mb-1"><i data-lucide="plus"></i></div><span class="text-sm font-semibold">Post a note</span></div>
+                                     <div class="text-center flex-shrink-0 w-20"><img src="https://i.pinimg.com/564x/2b/2f/ed/2b2fed50774776735a397855b719463c.jpg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg" alt="User Avatar"><span class="text-sm font-semibold">Phúc</span></div>
+                                     <div class="text-center flex-shrink-0 w-20"><img src="https://i.pinimg.com/564x/4b/3e/26/4b3e26466de4340d6e534f40d57116a4.jpg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg" alt="User Avatar"><span class="text-sm font-semibold">Trọng</span></div>
+                                     <div class="text-center flex-shrink-0 w-20"><img src="https://i.pinimg.com/564x/16/e0/63/16e063133e506d6494950a7c42f7c0c1.jpg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg" alt="User Avatar"><span class="text-sm font-semibold">Kiều Trang</span></div>
+                                     <div class="text-center flex-shrink-0 w-20"><img src="https://i.pinimg.com/564x/bd/8a/7e/bd8a7e0c1a8508e75b7c87c53d0ae38d.jpg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg" alt="User Avatar"><span class="text-sm font-semibold">Nhật Anh</span></div>
+                                     <div class="text-center flex-shrink-0 w-20"><img src="https://i.pinimg.com/564x/6c/37/10/6c3710b7b1378f87711463135c3639d6.jpg" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg" alt="User Avatar"><span class="text-sm font-semibold">Thủy</span></div>
+                                </div>
+                                
+                                <div class="bg-white/60 rounded-xl p-4 space-y-1">
+                                    <div class="flex items-center gap-4 p-2 rounded-lg hover:bg-white/80 cursor-pointer"><img src="https://i.pinimg.com/564x/d1/2c/3a/d12c3ab5244955f2d659646a78028f4c.jpg" class="w-12 h-12 rounded-full object-cover" alt="User Avatar"><div class="flex-grow">
+                                        <div class="font-bold">Thanh Huyền</div><p class="text-sm text-gray-600">Thứ hai rảnh không - 19:02</p></div></div>
+                                    <div class="flex items-center gap-4 p-2 rounded-lg hover:bg-white/80 cursor-pointer"><img src="https://i.pinimg.com/564x/cc/a2/33/cca23330f2c03845b533c64c1b978d35.jpg" class="w-12 h-12 rounded-full object-cover" alt="User Avatar"><div class="flex-grow">
+                                        <div class="font-bold">Vương Linh</div><p class="text-sm text-gray-600">Học cái này chưa, chỉ với - 17:49</p></div></div>
+                                     <div class="flex items-center gap-4 p-2 rounded-lg hover:bg-white/80 cursor-pointer"><img src="https://i.pinimg.com/564x/2e/0f/f2/2e0ff248a8031d2757049405d45d4e11.jpg" class="w-12 h-12 rounded-full object-cover" alt="User Avatar"><div class="flex-grow">
+                                        <div class="font-bold">Cẩm Ly</div><p class="text-sm text-gray-600">Làm bài này đi nè - 17:01</p></div></div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        -->
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- KHAI BÁO BIẾN ---
+        const pages = document.querySelectorAll('.page');
+        const appContainer = document.getElementById('app-container');
+        const appContentContainer = document.getElementById('app-content-container');
+        
+        // Auth elements
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const toggleAuthModeLink = document.getElementById('toggle-auth-mode');
+        const authTitle = document.getElementById('auth-title');
+        const loginError = document.getElementById('login-error');
+        const registerError = document.getElementById('register-error');
+        const navAuthTriggers = document.querySelectorAll('.nav-auth-trigger');
+
+        // App elements
+        const logoutButtons = [document.getElementById('logout-button'), document.getElementById('logout-button-mobile')];
+        const userMenuButton = document.getElementById('user-menu-button');
+        const userMenu = document.getElementById('user-menu');
+        const userDisplays = {
+            email: [document.getElementById('user-email-display'), document.getElementById('user-email-display-mobile')],
+            avatar: [document.getElementById('user-avatar'), document.getElementById('user-avatar-mobile')]
+        };
+
+        // Mobile Menu elements
+        const mobileMenuOpenBtn = document.getElementById('mobile-menu-open');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // --- MOCK DATA ---
+        const marketingData = {
+            "digital-marketing": { name: "Digital Marketing", articles: [{ title: "Tối ưu hóa Công cụ Tìm kiếm (SEO)", description: "Các kỹ thuật để cải thiện thứ hạng trang web trên Google, Bing..." },{ title: "Tiếp thị Công cụ Tìm kiếm (SEM)", description: "Chạy quảng cáo trả phí trên các công cụ tìm kiếm." }] },
+            "brand-management": { name: "Quản trị Thương hiệu", articles: [{ title: "Xây dựng Bộ nhận diện Thương hiệu", description: "Thiết kế logo, màu sắc, và thông điệp nhất quán." }] },
+            "market-research": { name: "Nghiên cứu Thị trường", articles: [{ title: "Phương pháp Khảo sát", description: "Thiết kế và triển khai các cuộc khảo sát hiệu quả." }] },
+            "marketing-analytics": { name: "Phân tích Marketing", articles: [{ title: "Sử dụng Google Analytics", description: "Theo dõi và phân tích lưu lượng truy cập website." }] },
+            "content-creation": { name: "Sáng tạo Nội dung", articles: [{ title: "Kỹ năng Viết bài (Copywriting)", description: "Viết nội dung quảng cáo, bán hàng hấp dẫn và thuyết phục." }] }
+        };
+        
+        const studentData = [
+            { name: "Nguyễn Mai Anh", age: 21, school: "ĐH RMIT", skills: "Content Writing, SEO, Design Canva", learningGoals: "Google Ads, Phân tích dữ liệu", imageUrl: "https://i.pinimg.com/564x/98/75/1e/98751e0f0df9c57176472491a67a996f.jpg" },
+            { name: "Trần Đức Huy", age: 22, school: "ĐH Kinh tế TP.HCM", skills: "Facebook Ads, Google Analytics", learningGoals: "Marketing Automation, Email Marketing", imageUrl: "https://i.pinimg.com/564x/01/f9/b1/01f9b17e42d7f46505333f38d33e7345.jpg" },
+            { name: "Lê Kiều Trang", age: 20, school: "ĐH FPT", skills: "Thiết kế UI/UX, Viết bài PR", learningGoals: "Nghiên cứu thị trường, Branding", imageUrl: "https://i.pinimg.com/564x/72/c4/f3/72c4f395422d109f52bcefa810a08e79.jpg" },
+            { name: "Phạm Nhật Minh", age: 23, school: "ĐH Ngoại thương", skills: "Phân tích số liệu, SEO on-page", learningGoals: "Xây dựng chiến lược, TikTok Marketing", imageUrl: "https://i.pinimg.com/564x/c7/2b/2f/c72b2f8a552f9b18995a5f15f7f32f6a.jpg" },
+            { name: "Hoàng Bảo Trân", age: 21, school: "ĐH Tôn Đức Thắng", skills: "Social Media, Community Management", learningGoals: "Copywriting, Video Editing", imageUrl: "https://i.pinimg.com/564x/27/a9/29/27a92966150255a88941215bb4306386.jpg" },
+        ];
+
+
+        // --- HÀM HỖ TRỢ ---
+        const showPage = (pageId) => {
+            pages.forEach(page => {
+                page.classList.remove('active');
+                if (page.id === pageId) {
+                    page.classList.add('active');
+                }
+            });
+        };
+
+        const getUsers = () => JSON.parse(localStorage.getItem('markey_users') || '[]');
+        const saveUsers = (users) => localStorage.setItem('markey_users', JSON.stringify(users));
+
+        // --- LOGIC ĐIỀU HƯỚNG VÀ RENDER ---
+        const navigateTo = (pageId) => {
+             // Cập nhật URL hash
+            window.location.hash = pageId.replace('-view', '');
+
+            const template = document.getElementById(`${pageId}-template`);
+            if (!template) {
+                console.error(`Template for ${pageId} not found!`);
+                appContentContainer.innerHTML = `<div class="p-8">Trang không tồn tại.</div>`;
+                return;
+            }
+
+            appContentContainer.innerHTML = template.innerHTML;
+            
+            // Cập nhật trạng thái active cho nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.toggle('nav-link-active', link.dataset.page === pageId);
+            });
+
+            // Chạy các hàm khởi tạo riêng cho từng trang
+            if (pageId === 'kho-thong-tin-view') initKhoThongTinPage();
+            // if (pageId === 'workdate-view') initWorkdatePage();
+            if (pageId === 'forum-view') initForumPage();
+            
+            lucide.createIcons(); // Luôn chạy lại để render icon mới
+        };
+
+        const checkSession = () => {
+            const loggedInUser = sessionStorage.getItem('markey_loggedInUser');
+            if (loggedInUser) {
+                showPage('app-container');
+                const pageId = window.location.hash.substring(1).replace(/$/, '-view') || 'home-view';
+                renderApp(loggedInUser, pageId);
+            } else {
+                showPage('landing-view');
+            }
+        };
+
+        // --- LOGIC CÁC TRANG ---
+        const renderApp = (email, initialPageId = 'home-view') => {
+            const userInitial = email.charAt(0).toUpperCase();
+            userDisplays.email.forEach(el => el.textContent = email);
+            userDisplays.avatar.forEach(el => el.textContent = userInitial);
+            navigateTo(initialPageId);
+        };
+        
+        // Khởi tạo trang Kho thông tin
+        function initKhoThongTinPage() {
+            const categoriesList = document.getElementById('categories-list');
+            if (!categoriesList) return;
+            
+            // Render danh mục
+            categoriesList.innerHTML = '';
+            Object.keys(marketingData).forEach(key => {
+                const category = marketingData[key];
+                const button = document.createElement('button');
+                button.className = 'w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-indigo-100 transition-colors duration-200';
+                button.textContent = category.name;
+                button.addEventListener('click', (e) => {
+                    renderContent(key);
+                    highlightCategory(e.currentTarget);
+                });
+                const li = document.createElement('li');
+                li.appendChild(button);
+                categoriesList.appendChild(li);
+            });
+            
+            // Render nội dung
+            const renderContent = (categoryKey) => {
+                const category = marketingData[categoryKey];
+                document.getElementById('content-title').textContent = category.name;
+                const contentArea = document.getElementById('content-area');
+                contentArea.innerHTML = '';
+                category.articles.forEach(article => {
+                    contentArea.innerHTML += `<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow"><h3 class="text-lg font-semibold text-indigo-700 mb-2">${article.title}</h3><p class="text-gray-600">${article.description}</p></div>`;
+                });
+            };
+            
+            const highlightCategory = (selectedButton) => {
+                document.querySelectorAll('#categories-list button').forEach(btn => btn.classList.remove('bg-indigo-500', 'text-white', 'font-semibold'));
+                selectedButton.classList.add('bg-indigo-500', 'text-white', 'font-semibold');
+            };
+
+            // Chọn mục đầu tiên mặc định
+            const firstKey = Object.keys(marketingData)[0];
+            if (firstKey) {
+                renderContent(firstKey);
+                setTimeout(() => {
+                    const firstBtn = categoriesList.querySelector('button');
+                    if (firstBtn) highlightCategory(firstBtn);
+                }, 0);
+            }
+        }
+        
+        /*
+        // Khởi tạo trang Workdate
+        function initWorkdatePage() {
+            let currentStudentIndex = 0;
+            const studentCardContainer = document.getElementById('student-card-container');
+            const prevBtn = document.getElementById('prev-student-btn');
+            const nextBtn = document.getElementById('next-student-btn');
+
+            const renderStudentCard = (index) => {
+                if (!studentCardContainer) return;
+                const student = studentData[index];
+                studentCardContainer.innerHTML = `
+                    <div class="bg-gray-200/80 p-4 rounded-2xl shadow-xl w-full max-w-sm mx-auto animate-fade-in">
+                        <div class="bg-[#EAEAEA] rounded-xl p-4 text-sm">
+                            <img src="${student.imageUrl}" alt="Ảnh đại diện của ${student.name}" class="w-28 h-32 object-cover rounded-md mx-auto -mt-10 mb-2 border-4 border-white shadow-md">
+                            <h3 class="text-center text-lg font-bold text-gray-800">${student.name}</h3>
+                            <div class="text-center text-gray-600 mb-4">
+                                <span>${student.age} tuổi</span> - <span>${student.school}</span>
+                            </div>
+                            <div class="space-y-3 text-left">
+                                <div>
+                                    <h4 class="font-semibold text-gray-500">Kỹ năng đã có:</h4>
+                                    <p class="bg-white/70 p-2 rounded-md text-gray-700">${student.skills}</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-500">Kỹ năng muốn học:</h4>
+                                    <p class="bg-white/70 p-2 rounded-md text-gray-700">${student.learningGoals}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style> .animate-fade-in { animation: fadeIn 0.5s; } @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } } </style>
+                `;
+            };
+
+            if(prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentStudentIndex = (currentStudentIndex - 1 + studentData.length) % studentData.length;
+                    renderStudentCard(currentStudentIndex);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    currentStudentIndex = (currentStudentIndex + 1) % studentData.length;
+                    renderStudentCard(currentStudentIndex);
+                });
+            }
+
+            renderStudentCard(currentStudentIndex); // Render thẻ đầu tiên
+
+            const tabButtons = document.querySelectorAll('.workdate-tab-btn');
+            const tabPanes = document.querySelectorAll('.workdate-tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('bg-white', 'text-indigo-600', 'shadow');
+                        btn.classList.add('text-gray-600');
+                    });
+                    button.classList.add('bg-white', 'text-indigo-600', 'shadow');
+                    button.classList.remove('text-gray-600');
+                    
+                    const tab = button.dataset.tab;
+                    tabPanes.forEach(pane => {
+                        pane.classList.toggle('hidden', pane.id !== `${tab}-content`);
+                    });
+                });
+            });
+        }
+        */
+        
+        // Khởi tạo trang Forum
+        function initForumPage() {
+            // No specific initialization needed for the new static forum layout.
+            // Logic for creating new threads or viewing them would go here.
+        }
+
+
+        // --- GẮN SỰ KIỆN ---
+        // Chuyển từ landing -> auth
+        navAuthTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('auth-view');
+            });
+        });
+        
+        // Chuyển đổi login/register
+        toggleAuthModeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.classList.toggle('hidden');
+            registerForm.classList.toggle('hidden');
+            const isLogin = loginForm.offsetParent !== null;
+            authTitle.textContent = isLogin ? 'Đăng nhập vào tài khoản của bạn' : 'Tạo tài khoản mới';
+            toggleAuthModeLink.textContent = isLogin ? 'Chưa có tài khoản? Đăng ký ngay' : 'Đã có tài khoản? Đăng nhập';
+        });
+
+        // Xử lý đăng ký
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            registerError.textContent = '';
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            if (password !== confirmPassword) { registerError.textContent = 'Mật khẩu xác nhận không khớp.'; return; }
+            const users = getUsers();
+            if (users.some(user => user.email === email)) { registerError.textContent = 'Email này đã được sử dụng.'; return; }
+            
+            users.push({ email, password });
+            saveUsers(users);
+            sessionStorage.setItem('markey_loggedInUser', email);
+            showPage('app-container');
+            renderApp(email);
+        });
+
+        // Xử lý đăng nhập
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            loginError.textContent = '';
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const user = getUsers().find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                sessionStorage.setItem('markey_loggedInUser', email);
+                showPage('app-container');
+                renderApp(email);
+            } else {
+                loginError.textContent = 'Email hoặc mật khẩu không chính xác.';
+            }
+        });
+
+        // Xử lý đăng xuất
+        logoutButtons.forEach(btn => btn.addEventListener('click', () => {
+            sessionStorage.removeItem('markey_loggedInUser');
+            window.location.hash = '';
+            checkSession();
+        }));
+
+        // Menu User & Mobile
+        userMenuButton.addEventListener('click', () => userMenu.classList.toggle('hidden'));
+        document.addEventListener('click', (e) => { if (!userMenuButton.contains(e.target) && !userMenu.contains(e.target)) userMenu.classList.add('hidden'); });
+        mobileMenuOpenBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Xử lý điều hướng trong app
+        document.body.addEventListener('click', (e) => {
+            const navLink = e.target.closest('.nav-link, .nav-link-card');
+            if (navLink && navLink.dataset.page) {
+                e.preventDefault();
+                navigateTo(navLink.dataset.page);
+                mobileMenu.classList.add('hidden'); // Đóng menu mobile sau khi click
+            }
+        });
+        
+        // --- KHỞI CHẠY ---
+        checkSession();
+    });
+    </script>
+</body>
+</html>
