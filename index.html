@@ -48,8 +48,8 @@
                             <span class="ml-2 font-bold text-xl">Markey</span>
                         </div>
                         <div>
-                             <a href="#" class="nav-auth-trigger font-medium text-indigo-600 hover:text-indigo-500">Đăng nhập</a>
-                             <a href="#" class="nav-auth-trigger ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                             <a href="#login" class="font-medium text-indigo-600 hover:text-indigo-500">Đăng nhập</a>
+                             <a href="#register" class="ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                                 Đăng ký
                             </a>
                         </div>
@@ -66,19 +66,19 @@
                             Tìm kiếm kỹ năng bạn quan tâm và bắt đầu hành trình trở thành một Marketer chuyên nghiệp.
                         </p>
                         <div class="max-w-2xl mx-auto">
-                            <div class="relative nav-auth-trigger cursor-pointer">
-                                <input type="text" placeholder="Nhập kỹ năng bạn quan tâm..." class="w-full pl-5 pr-16 py-4 text-lg border-2 border-gray-300 rounded-full focus:ring-indigo-500 focus:border-indigo-500 transition duration-300" readonly>
-                                <button class="absolute inset-y-0 right-0 flex items-center justify-center w-14 h-14 bg-indigo-600 text-white rounded-full m-1.5 hover:bg-indigo-700">
+                            <a href="#register" class="relative block cursor-pointer">
+                                <input type="text" placeholder="Nhập kỹ năng bạn quan tâm..." class="w-full pl-5 pr-16 py-4 text-lg border-2 border-gray-300 rounded-full focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 pointer-events-none" readonly>
+                                <div class="absolute inset-y-0 right-0 flex items-center justify-center w-14 h-14 bg-indigo-600 text-white rounded-full m-1.5 hover:bg-indigo-700">
                                     <i data-lucide="arrow-right"></i>
-                                </button>
-                            </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="mt-10 flex flex-wrap justify-center gap-3">
-                           <a href="#" class="nav-auth-trigger bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-yellow-500">Kỹ năng thiết kế</a>
-                           <a href="#" class="nav-auth-trigger bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Viết content</a>
-                           <a href="#" class="nav-auth-trigger bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-yellow-500">Nghiên cứu thị trường</a>
-                           <a href="#" class="nav-auth-trigger bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Giao tiếp</a>
-                           <a href="#" class="nav-auth-trigger bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Public Relationship</a>
+                           <a href="#register" class="bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-yellow-500">Kỹ năng thiết kế</a>
+                           <a href="#register" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Viết content</a>
+                           <a href="#register" class="bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-yellow-500">Nghiên cứu thị trường</a>
+                           <a href="#register" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Giao tiếp</a>
+                           <a href="#register" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold text-sm shadow-sm hover:bg-gray-300">Public Relationship</a>
                         </div>
                     </div>
                 </main>
@@ -352,8 +352,7 @@
         const authTitle = document.getElementById('auth-title');
         const loginError = document.getElementById('login-error');
         const registerError = document.getElementById('register-error');
-        const navAuthTriggers = document.querySelectorAll('.nav-auth-trigger');
-
+        
         // App elements
         const logoutButtons = [document.getElementById('logout-button'), document.getElementById('logout-button-mobile')];
         const userMenuButton = document.getElementById('user-menu-button');
@@ -375,15 +374,6 @@
             "marketing-analytics": { name: "Phân tích Marketing", articles: [{ title: "Sử dụng Google Analytics", description: "Theo dõi và phân tích lưu lượng truy cập website." }] },
             "content-creation": { name: "Sáng tạo Nội dung", articles: [{ title: "Kỹ năng Viết bài (Copywriting)", description: "Viết nội dung quảng cáo, bán hàng hấp dẫn và thuyết phục." }] }
         };
-        
-        const studentData = [
-            { name: "Nguyễn Mai Anh", age: 21, school: "ĐH RMIT", skills: "Content Writing, SEO, Design Canva", learningGoals: "Google Ads, Phân tích dữ liệu", imageUrl: "https://i.pinimg.com/564x/98/75/1e/98751e0f0df9c57176472491a67a996f.jpg" },
-            { name: "Trần Đức Huy", age: 22, school: "ĐH Kinh tế TP.HCM", skills: "Facebook Ads, Google Analytics", learningGoals: "Marketing Automation, Email Marketing", imageUrl: "https://i.pinimg.com/564x/01/f9/b1/01f9b17e42d7f46505333f38d33e7345.jpg" },
-            { name: "Lê Kiều Trang", age: 20, school: "ĐH FPT", skills: "Thiết kế UI/UX, Viết bài PR", learningGoals: "Nghiên cứu thị trường, Branding", imageUrl: "https://i.pinimg.com/564x/72/c4/f3/72c4f395422d109f52bcefa810a08e79.jpg" },
-            { name: "Phạm Nhật Minh", age: 23, school: "ĐH Ngoại thương", skills: "Phân tích số liệu, SEO on-page", learningGoals: "Xây dựng chiến lược, TikTok Marketing", imageUrl: "https://i.pinimg.com/564x/c7/2b/2f/c72b2f8a552f9b18995a5f15f7f32f6a.jpg" },
-            { name: "Hoàng Bảo Trân", age: 21, school: "ĐH Tôn Đức Thắng", skills: "Social Media, Community Management", learningGoals: "Copywriting, Video Editing", imageUrl: "https://i.pinimg.com/564x/27/a9/29/27a92966150255a88941215bb4306386.jpg" },
-        ];
-
 
         // --- HÀM HỖ TRỢ ---
         const showPage = (pageId) => {
@@ -391,74 +381,101 @@
                 page.classList.toggle('active', page.id === pageId);
             });
         };
-
         const getUsers = () => JSON.parse(localStorage.getItem('markey_users') || '[]');
         const saveUsers = (users) => localStorage.setItem('markey_users', JSON.stringify(users));
 
         // --- HỆ THỐNG ROUTING ---
 
-        // 1. Định nghĩa các routes
-        const routes = {
+        // 1. Định nghĩa các routes cho phần APP (sau khi đăng nhập)
+        const appRoutes = {
             'home': { templateId: 'home-view-template', init: null },
             'kho-thong-tin': { templateId: 'kho-thong-tin-view-template', init: initKhoThongTinPage },
             'forum': { templateId: 'forum-view-template', init: initForumPage },
-            // 'workdate': { templateId: 'workdate-view-template', init: initWorkdatePage } // Commented out
+            // 'workdate': { templateId: 'workdate-view-template', init: initWorkdatePage }
         };
 
-        // 2. Hàm xử lý khi không tìm thấy route (404)
-        const showNotFound = () => {
+        // 2. Hàm render nội dung bên trong app
+        const renderAppContent = (path) => {
+            const route = appRoutes[path];
+            if (route) {
+                const template = document.getElementById(route.templateId);
+                if (template) {
+                    appContentContainer.innerHTML = template.innerHTML;
+                    if (route.init) route.init(); // Chạy hàm khởi tạo nếu có
+                    updateActiveNav(path);
+                    lucide.createIcons();
+                } else {
+                    showNotFoundInApp();
+                }
+            } else {
+                showNotFoundInApp();
+            }
+        };
+
+        const showNotFoundInApp = () => {
             const template = document.getElementById('not-found-view-template');
             if (template) appContentContainer.innerHTML = template.innerHTML;
             updateActiveNav(''); // Bỏ active tất cả nav link
         };
 
-        // 3. Hàm cập nhật giao diện nav link active
+        // 3. Hàm cấu hình trang Auth
+        const configureAuthPage = (mode) => {
+            const isLogin = mode === 'login';
+            loginForm.classList.toggle('hidden', !isLogin);
+            registerForm.classList.toggle('hidden', isLogin);
+            authTitle.textContent = isLogin ? 'Đăng nhập vào tài khoản của bạn' : 'Tạo tài khoản mới';
+            toggleAuthModeLink.textContent = isLogin ? 'Chưa có tài khoản? Đăng ký ngay' : 'Đã có tài khoản? Đăng nhập';
+            toggleAuthModeLink.href = isLogin ? '#register' : '#login';
+        };
+        
+        // 4. Hàm cập nhật giao diện nav link active
         const updateActiveNav = (path) => {
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.toggle('nav-link-active', link.getAttribute('href') === `#${path}`);
             });
         };
         
-        // 4. Hàm Router chính
+        // 5. Hàm Router chính
         const router = () => {
-            const path = window.location.hash.substring(1) || 'home';
-            const route = routes[path];
+            const path = window.location.hash.substring(1);
+            const loggedInUser = sessionStorage.getItem('markey_loggedInUser');
 
-            if (route) {
-                const template = document.getElementById(route.templateId);
-                if (template) {
-                    appContentContainer.innerHTML = template.innerHTML;
-                    // Chạy hàm khởi tạo nếu có
-                    if (route.init) route.init();
-                    updateActiveNav(path);
-                    lucide.createIcons(); // Render icons cho trang mới
-                } else {
-                    console.error(`Template not found for route: ${path}`);
-                    showNotFound();
+            if (loggedInUser) {
+                // --- LOGIC KHI ĐÃ ĐĂNG NHẬP ---
+                showPage('app-container');
+                const userInitial = loggedInUser.charAt(0).toUpperCase();
+                userDisplays.email.forEach(el => el.textContent = loggedInUser);
+                userDisplays.avatar.forEach(el => el.textContent = userInitial);
+
+                if (path === 'login' || path === 'register' || path === '') {
+                    window.location.hash = 'home'; // Chuyển hướng về trang chủ
+                    return; // Dừng tại đây, router sẽ chạy lại do hash thay đổi
                 }
+                renderAppContent(path || 'home'); // Render trang mặc định là home
+
             } else {
-                showNotFound();
+                // --- LOGIC KHI CHƯA ĐĂNG NHẬP ---
+                if (appRoutes[path]) {
+                    window.location.hash = 'login'; // Cố truy cập trang private -> chuyển hướng tới login
+                    return;
+                }
+
+                switch (path) {
+                    case 'login':
+                        showPage('auth-view');
+                        configureAuthPage('login');
+                        break;
+                    case 'register':
+                        showPage('auth-view');
+                        configureAuthPage('register');
+                        break;
+                    default: // Bao gồm cả hash rỗng
+                        showPage('landing-view');
+                }
             }
         };
 
         // --- LOGIC CÁC TRANG ---
-        const checkSession = () => {
-            const loggedInUser = sessionStorage.getItem('markey_loggedInUser');
-            if (loggedInUser) {
-                showPage('app-container');
-                renderApp(loggedInUser);
-            } else {
-                window.location.hash = ''; // Xóa hash nếu chưa đăng nhập
-                showPage('landing-view');
-            }
-        };
-
-        const renderApp = (email) => {
-            const userInitial = email.charAt(0).toUpperCase();
-            userDisplays.email.forEach(el => el.textContent = email);
-            userDisplays.avatar.forEach(el => el.textContent = userInitial);
-            router(); // Gọi router để render trang ban đầu dựa trên URL hash
-        };
         
         // Khởi tạo trang Kho thông tin
         function initKhoThongTinPage() {
@@ -505,11 +522,6 @@
             }
         }
         
-        /*
-        // Khởi tạo trang Workdate
-...
-        */
-        
         // Khởi tạo trang Forum
         function initForumPage() {
             // No specific initialization needed for the new static forum layout.
@@ -517,24 +529,7 @@
 
 
         // --- GẮN SỰ KIỆN ---
-        // Chuyển từ landing -> auth
-        navAuthTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                showPage('auth-view');
-            });
-        });
         
-        // Chuyển đổi login/register
-        toggleAuthModeLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginForm.classList.toggle('hidden');
-            registerForm.classList.toggle('hidden');
-            const isLogin = loginForm.offsetParent !== null;
-            authTitle.textContent = isLogin ? 'Đăng nhập vào tài khoản của bạn' : 'Tạo tài khoản mới';
-            toggleAuthModeLink.textContent = isLogin ? 'Chưa có tài khoản? Đăng ký ngay' : 'Đã có tài khoản? Đăng nhập';
-        });
-
         // Xử lý đăng ký
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -550,9 +545,7 @@
             users.push({ email, password });
             saveUsers(users);
             sessionStorage.setItem('markey_loggedInUser', email);
-            showPage('app-container');
-            window.location.hash = 'home'; // Chuyển đến trang chủ sau khi đăng ký
-            renderApp(email);
+            window.location.hash = 'home'; // Để router xử lý việc chuyển trang
         });
 
         // Xử lý đăng nhập
@@ -565,13 +558,7 @@
             
             if (user) {
                 sessionStorage.setItem('markey_loggedInUser', email);
-                showPage('app-container');
-                // Giữ lại hash cũ nếu có, nếu không thì về home
-                const currentHash = window.location.hash;
-                if (!currentHash || currentHash === '#') {
-                    window.location.hash = 'home';
-                }
-                renderApp(email);
+                window.location.hash = 'home'; // Để router xử lý việc chuyển trang
             } else {
                 loginError.textContent = 'Email hoặc mật khẩu không chính xác.';
             }
@@ -580,7 +567,8 @@
         // Xử lý đăng xuất
         logoutButtons.forEach(btn => btn.addEventListener('click', () => {
             sessionStorage.removeItem('markey_loggedInUser');
-            checkSession();
+            window.location.hash = ''; // Về trang landing
+            router(); // Chạy lại router để cập nhật UI
         }));
 
         // Menu User & Mobile
@@ -599,7 +587,7 @@
         window.addEventListener('hashchange', router);
         
         // --- KHỞI CHẠY ---
-        checkSession(); // Kiểm tra phiên đăng nhập và chạy router lần đầu
+        router(); // Chạy router lần đầu khi tải trang
     });
     </script>
 </body>
